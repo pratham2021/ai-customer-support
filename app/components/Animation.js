@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const Animation = ({ width = 300, height = 300 }) => {
+const Animation = ({ width = 150, height = 150 }) => {
     const mountRef = useRef(null);
 
     useEffect(() => {

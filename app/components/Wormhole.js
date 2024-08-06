@@ -16,7 +16,7 @@ const Wormhole = () => {
         const h = container.clientHeight;
 
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x000000, 0.2);
+        scene.fog = new THREE.FogExp2(0x000000, 0.3);
 
         const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
         camera.position.z = 5;
@@ -99,9 +99,9 @@ const Wormhole = () => {
             ref={mountRef}
             style={{
                 width: '100%',
-                height: 'calc(100vh - 300px)', 
+                height: 'calc(100vh - 150px)', 
                 position: 'absolute',
-                top: '300px',
+                top: '150px',
                 left: 0,
                 background: '#000'
             }}
