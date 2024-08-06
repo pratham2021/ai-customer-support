@@ -53,14 +53,11 @@ const Animation = () => {
 
         animate();
 
-        // Cleanup function
         return () => {
             document.body.removeChild(renderer.domElement);
             renderer.dispose();
         };
-    }, []); // Empty dependency array
-
-    return null; // No need to render anything
+    }, []); 
 };
 
 export default Animation;
