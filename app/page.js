@@ -1,12 +1,12 @@
 'use client'
 import Animation from './components/Animation';
+import Wormhole from './components/Wormhole';
 
 export default function Home() {
   return (
-    <>
-      <Animation/>
-      <Wormhole/>
-    </>
-    
+    <div style={{ position: 'relative', width: '100%', height: '100vh'}}>
+        <Animation/>
+        <Wormhole width='800px' height='600px'/>
+    </div>
   );
 }

@@ -1,22 +1,23 @@
 'use client'
-import { useEffect } from "react";
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { useEffect, useRef } from 'react';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-const Animation = () => {
+const Animation = ({ width = 300, height = 300 }) => {
+    const mountRef = useRef(null);
+
     useEffect(() => {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
         const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(w / 8, h / 8);
-        document.body.appendChild(renderer.domElement);
+        renderer.setSize(width, height);
+        mountRef.current.appendChild(renderer.domElement);
 
         const fov = 70;
-        const aspect = w / h;
+        const aspect = width / height;
         const near = 0.1;
         const far = 10;
         const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
         camera.position.z = 2;
+
         const scene = new THREE.Scene();
 
         const controls = new OrbitControls(camera, renderer.domElement);
@@ -54,10 +55,26 @@ const Animation = () => {
         animate();
 
         return () => {
-            document.body.removeChild(renderer.domElement);
+            mountRef.current.removeChild(renderer.domElement);
             renderer.dispose();
+            controls.dispose();
         };
-    }, []); 
+    }, [width, height]);
+
+    return (
+        <div
+            ref={mountRef}
+            style={{
+                width: `${width}px`,
+                height: `${height}px`,
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                zIndex: 1,
+                backgroundColor: '#000'
+            }}
+        />
+    );
 };
 
 export default Animation;
