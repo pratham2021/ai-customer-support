@@ -1,50 +1,52 @@
-'use client'
-import { Box, Stack, Button, TextField, TextareaAutosize} from '@mui/material'
-import { useState } from 'react'
-import React from 'react'
-import DisplayText from './DisplayText'
-import SendText from './SendText'
+"use client";
+import { Box, Stack, Button, TextField, TextareaAutosize } from "@mui/material";
+import { useState } from "react";
+import React from "react";
+import DisplayText from "./DisplayText";
+import SendText from "./SendText";
 
 function ChatBox() {
   const [messages, setMessages] = useState([
     {
-      role: 'assistant',
-      content: "Hi! I'm the Headstarter support assistant. How can I help you today?",
+      role: "assistant",
+      content:
+        "Hi! I'm the Headstarter support assistant. How can I help you today?",
     },
     {
-      role: 'user',
+      role: "user",
       content: "Hi!",
     },
     {
-      role: 'assistant',
+      role: "assistant",
       content: "Hello there",
     },
     {
-      role: 'assistant',
+      role: "assistant",
       content: "Hello there",
     },
     {
-      role: 'assistant',
+      role: "assistant",
       content: "Hello here",
     },
 
     {
-      role: 'user',
+      role: "user",
       content: "Hi there!",
     },
     {
-      role: 'user',
+      role: "user",
       content: "Hi here!",
     },
     {
-      role: 'user',
+      role: "user",
       content: "Hi there!",
     },
     {
-      role: 'user',
-      content: "fuiewbifenfheifnien ienifneifn wenfiwe nifneifnienfi ewfne nwfniwe ife  fiweqnfi wnf nifnwein wieunf wqnfei weifniwef nen fwenqif newiufnw nfwifniewfi we",
+      role: "user",
+      content:
+        "fuiewbifenfheifnien ienifneifn wenfiwe nifneifnienfi ewfne nwfniwe ife  fiweqnfi wnf nifnwein wieunf wqnfei weifniwef nen fwenqif newiufnw nfwifniewfi we",
     },
-  ])
+  ]);
 
   return (
     <Box
@@ -55,10 +57,10 @@ function ChatBox() {
       justifyContent="center"
       alignItems="center"
       marginTop={2}
-      marginX={'auto'}
+      marginX={"auto"}
     >
       <Stack
-        direction={'column'}
+        direction={"column"}
         marginTop={4}
         width="100%"
         height="100%"
@@ -67,10 +69,10 @@ function ChatBox() {
         spacing={1.5}
       >
         <DisplayText messages={messages} />
-        <SendText messages={messages} setMessages={setMessages}/>
+        <SendText messages={messages} setMessages={setMessages} />
       </Stack>
     </Box>
-  )
+  );
 }
 
-export default ChatBox
+export default ChatBox;
