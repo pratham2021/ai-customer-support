@@ -1,52 +1,14 @@
 "use client";
-import { Box, Stack, Button, TextField, TextareaAutosize } from "@mui/material";
-import { useState } from "react";
+import { Box, Stack } from "@mui/material";
 import React from "react";
 import DisplayText from "./DisplayText";
 import SendText from "./SendText";
+import { useChat } from "ai/react";
 
 function ChatBox() {
-  const [messages, setMessages] = useState([
-    {
-      role: "assistant",
-      content:
-        "Hi! I'm the Headstarter support assistant. How can I help you today?",
-    },
-    {
-      role: "user",
-      content: "Hi!",
-    },
-    {
-      role: "assistant",
-      content: "Hello there",
-    },
-    {
-      role: "assistant",
-      content: "Hello there",
-    },
-    {
-      role: "assistant",
-      content: "Hello here",
-    },
-
-    {
-      role: "user",
-      content: "Hi there!",
-    },
-    {
-      role: "user",
-      content: "Hi here!",
-    },
-    {
-      role: "user",
-      content: "Hi there!",
-    },
-    {
-      role: "user",
-      content:
-        "fuiewbifenfheifnien ienifneifn wenfiwe nifneifnienfi ewfne nwfniwe ife  fiweqnfi wnf nifnwein wieunf wqnfei weifniwef nen fwenqif newiufnw nfwifniewfi we",
-    },
-  ]);
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    api: "/api/chat",
+  });
 
   return (
     <Box
@@ -69,7 +31,12 @@ function ChatBox() {
         spacing={1.5}
       >
         <DisplayText messages={messages} />
-        <SendText messages={messages} setMessages={setMessages} />
+        <SendText
+          messages={messages}
+          handleSubmit={handleSubmit}
+          input={input}
+          handleInputChange={handleInputChange}
+        />
       </Stack>
     </Box>
   );
