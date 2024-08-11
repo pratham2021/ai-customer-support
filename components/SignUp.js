@@ -1,7 +1,33 @@
+"use client";
 import React from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../app/firebase/config";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-function SignUp() {
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      router.push("/");
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      setError("Falied to create an account. Please try again.");
+    }
+  };
+
   return (
     <Box
       width="100vw"
@@ -33,14 +59,32 @@ function SignUp() {
             justifyContent="center"
             alignItems="center"
           >
-            <TextField label="Username" variant="outlined" />
-            <TextField label="Password" variant="outlined" />
+            <TextField
+              placeholder="Email"
+              variant="outlined"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                // console.log(email);
+              }}
+            />
+            <TextField
+              placeholder="Password"
+              variant="outlined"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                // console.log(password);
+              }}
+            />
           </Stack>
-          <Button variant="contained">Sign Up</Button>
+          <Button variant="contained" onClick={handleSubmit}>
+            Sign Up
+          </Button>
         </Stack>
       </Box>
     </Box>
   );
 }
 
-export default SignUp;
+export default Login;

@@ -1,7 +1,18 @@
+"use client";
 import React from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = () => {
+    console.log(email);
+    console.log(password);
+  };
+
   return (
     <Box
       width="100vw"
@@ -33,10 +44,28 @@ function Login() {
             justifyContent="center"
             alignItems="center"
           >
-            <TextField label="Username" variant="outlined" />
-            <TextField label="Password" variant="outlined" />
+            <TextField
+              placeholder="Email"
+              variant="outlined"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+                // console.log(email);
+              }}
+            />
+            <TextField
+              placeholder="Password"
+              variant="outlined"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                // console.log(password);
+              }}
+            />
           </Stack>
-          <Button variant="contained">Login</Button>
+          <Button variant="contained" onClick={handleSubmit}>
+            Login
+          </Button>
         </Stack>
       </Box>
     </Box>
