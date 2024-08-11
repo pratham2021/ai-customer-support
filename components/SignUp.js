@@ -6,11 +6,15 @@ import { auth } from "../app/firebase/config";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-function Login() {
+function SignUp({ toggleDisplay }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+
+  const changeDisplay = () => {
+    toggleDisplay();
+  };
 
   const handleSubmit = async () => {
     try {
@@ -81,10 +85,14 @@ function Login() {
           <Button variant="contained" onClick={handleSubmit}>
             Sign Up
           </Button>
+
+          <Typography>
+            Already Have an Account? <a onClick={changeDisplay}>Login</a>
+          </Typography>
         </Stack>
       </Box>
     </Box>
   );
 }
 
-export default Login;
+export default SignUp;

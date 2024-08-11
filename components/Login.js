@@ -6,11 +6,15 @@ import { useState } from "react";
 import { auth } from "../app/firebase/config";
 import { useRouter } from "next/navigation";
 
-function Login() {
+function Login({ toggleDisplay }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+
+  const changeDisplay = () => {
+    toggleDisplay();
+  };
 
   const handleSubmit = async () => {
     try {
@@ -26,8 +30,6 @@ function Login() {
       console.log(errorCode, errorMessage);
       setError("Failed to login. Please try again.");
     }
-    // console.log(email);
-    // console.log(password);
   };
 
   return (
@@ -83,6 +85,10 @@ function Login() {
           <Button variant="contained" onClick={handleSubmit}>
             Login
           </Button>
+
+          <Typography>
+            Need to create an account? <a onClick={changeDisplay}>Sign up</a>
+          </Typography>
         </Stack>
       </Box>
     </Box>
