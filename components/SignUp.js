@@ -69,7 +69,6 @@ function SignUp({ toggleDisplay }) {
               value={email}
               onChange={(event) => {
                 setEmail(event.target.value);
-                // console.log(email);
               }}
             />
             <TextField
@@ -78,7 +77,6 @@ function SignUp({ toggleDisplay }) {
               value={password}
               onChange={(event) => {
                 setPassword(event.target.value);
-                // console.log(password);
               }}
             />
           </Stack>
