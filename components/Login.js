@@ -1,16 +1,33 @@
 "use client";
 import React from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
+import { auth } from "../app/firebase/config";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-  const handleSubmit = () => {
-    console.log(email);
-    console.log(password);
+  const handleSubmit = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      router.push("/");
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      setError("Failed to login. Please try again.");
+    }
+    // console.log(email);
+    // console.log(password);
   };
 
   return (
