@@ -10,9 +10,17 @@ import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 function ChatBox({ setUser }) {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    api: "/api/chat",
-  });
+  const { initialMessages, messages, input, handleInputChange, handleSubmit } =
+    useChat({
+      api: "/api/chat",
+      initialMessages: [
+        {
+          role: "assistant",
+          content:
+            "Hi there! I'm here to help with your coding challenges by offering hints and guidance. Feel free to ask for assistance whenever you need it!",
+        },
+      ],
+    });
   const router = useRouter();
 
   const handleLogout = async () => {
