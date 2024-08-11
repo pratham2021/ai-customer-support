@@ -68,6 +68,7 @@ function ChatBox({ setUser }) {
             width="100%"
             padding={1}
             borderBottom="1px solid black"
+            paddingX={1}
           >
             <Typography variant="h6">Chat</Typography>
             <Button variant="contained" onClick={handleLogout}>

@@ -1,9 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { use, useEffect } from "react";
 import { Box, Stack } from "@mui/material";
+import { useRef } from "react";
 
 function DisplayText({ messages }) {
+  const endofMessagesRef = useRef(null);
+
+  useEffect(() => {
+    endofMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <Stack
       direction={"column"}
@@ -12,6 +19,7 @@ function DisplayText({ messages }) {
       maxHeight="100%"
       overflow="auto"
       paddingBottom={2}
+      paddingX={2}
       sx={{
         borderBottom: "1px solid black",
       }}
@@ -29,12 +37,13 @@ function DisplayText({ messages }) {
             color={message.role === "assistant" ? "black" : "white"}
             borderRadius={5}
             p={3}
-            maxWidth="50%"
+            maxWidth="52%"
           >
             {message.content}
           </Box>
         </Box>
       ))}
+      <div ref={endofMessagesRef}></div>
     </Stack>
   );
 }

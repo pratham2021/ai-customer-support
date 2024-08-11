@@ -4,7 +4,7 @@ import { Stack, Button, TextField } from "@mui/material";
 
 function SendText({ meessages, input, handleInputChange, handleSubmit }) {
   return (
-    <Stack direction={"row"} spacing={2}>
+    <Stack direction={"row"} spacing={2} paddingX={1}>
       <TextField
         multiline
         maxRows={3}
