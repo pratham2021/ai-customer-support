@@ -35,44 +35,54 @@ function ChatBox({ setUser }) {
 
   return (
     <Box
-      width="90vw"
-      height="90vh"
+      width="100vw"
+      height="100vh"
       display="flex"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      marginTop={2}
-      marginX={"auto"}
+      // marginTop={2}
+      // marginX={"auto"}
     >
-      <Stack
-        direction={"column"}
-        marginTop={4}
-        width="100%"
-        height="100%"
-        border="1px solid black"
-        padding={1}
-        spacing={1.5}
+      <Box
+        width="90vw"
+        height="90vh"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
       >
-        <Box
-          display="flex"
-          justifyContent="space-between"
+        <Stack
+          direction={"column"}
+          // marginTop={4}
           width="100%"
+          height="100%"
+          border="1px solid black"
+          borderRadius={2}
           padding={1}
-          borderBottom="1px solid black"
+          spacing={1.5}
         >
-          <Typography variant="h6">Chat</Typography>
-          <Button variant="contained" onClick={handleLogout}>
-            Log Out
-          </Button>
-        </Box>
-        <DisplayText messages={messages} />
-        <SendText
-          messages={messages}
-          handleSubmit={handleSubmit}
-          input={input}
-          handleInputChange={handleInputChange}
-        />
-      </Stack>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            width="100%"
+            padding={1}
+            borderBottom="1px solid black"
+          >
+            <Typography variant="h6">Chat</Typography>
+            <Button variant="contained" onClick={handleLogout}>
+              Log Out
+            </Button>
+          </Box>
+          <DisplayText messages={messages} />
+          <SendText
+            messages={messages}
+            handleSubmit={handleSubmit}
+            input={input}
+            handleInputChange={handleInputChange}
+          />
+        </Stack>
+      </Box>
     </Box>
   );
 }
