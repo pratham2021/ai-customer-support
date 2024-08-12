@@ -43,7 +43,7 @@ function SignUp({ toggleDisplay }) {
     >
       <Box
         width="50vw"
-        height="60vh"
+        height="65vh"
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -63,6 +63,7 @@ function SignUp({ toggleDisplay }) {
             justifyContent="center"
             alignItems="center"
           >
+            {error && <Typography color="error">{error}</Typography>}
             <TextField
               placeholder="Email"
               variant="outlined"

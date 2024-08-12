@@ -27,8 +27,9 @@ function Login({ toggleDisplay }) {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-      setError("Failed to login. Please try again.");
+      console.log(errorMessage);
+
+      setError("Invalid Email or Password. Please try again.");
     }
   };
 
@@ -43,7 +44,7 @@ function Login({ toggleDisplay }) {
     >
       <Box
         width="50vw"
-        height="60vh"
+        height="65vh"
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -63,6 +64,7 @@ function Login({ toggleDisplay }) {
             justifyContent="center"
             alignItems="center"
           >
+            {error && <Typography color="error">{error}</Typography>}
             <TextField
               placeholder="Email"
               variant="outlined"
