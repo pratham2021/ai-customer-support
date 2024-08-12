@@ -1,5 +1,6 @@
 "use client";
 import ChatBox from "@/components/ChatBox";
+import LoadingPage from "@/components/LoadingPage";
 import { auth } from "../app/firebase/config";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -28,7 +29,7 @@ export default function Home() {
   }, [router]);
 
   if (user === undefined) {
-    return <div>Loading...</div>;
+    return <LoadingPage />;
   }
 
   return <ChatBox setUser={setUser} />;

@@ -10,9 +10,17 @@ import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
 function ChatBox({ setUser }) {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
-    api: "/api/chat",
-  });
+  const { initialMessages, messages, input, handleInputChange, handleSubmit } =
+    useChat({
+      api: "/api/chat",
+      initialMessages: [
+        {
+          role: "assistant",
+          content:
+            "Hi there! I'm here to help with your coding challenges by offering hints and guidance. Feel free to ask for assistance whenever you need it!",
+        },
+      ],
+    });
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -27,44 +35,57 @@ function ChatBox({ setUser }) {
 
   return (
     <Box
-      width="90vw"
-      height="90vh"
+      width="100vw"
+      height="100vh"
       display="flex"
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      marginTop={2}
-      marginX={"auto"}
     >
-      <Stack
-        direction={"column"}
-        marginTop={4}
-        width="100%"
-        height="100%"
-        border="1px solid black"
-        padding={1}
-        spacing={1.5}
+      <Box
+        width="90vw"
+        height="90vh"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
       >
-        <Box
-          display="flex"
-          justifyContent="space-between"
+        <Stack
+          direction={"column"}
           width="100%"
+          height="100%"
+          border="1px solid black"
+          borderRadius={2}
           padding={1}
-          borderBottom="1px solid black"
+          spacing={1.5}
+          sx={{ boxShadow: 3 }}
         >
-          <Typography variant="h6">Chat</Typography>
-          <Button variant="contained" onClick={handleLogout}>
-            Log Out
-          </Button>
-        </Box>
-        <DisplayText messages={messages} />
-        <SendText
-          messages={messages}
-          handleSubmit={handleSubmit}
-          input={input}
-          handleInputChange={handleInputChange}
-        />
-      </Stack>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            width="100%"
+            padding={1}
+            borderBottom="1px solid black"
+            paddingX={1}
+          >
+            <Typography variant="h6">Chat</Typography>
+            <Button
+              className="button"
+              variant="contained"
+              onClick={handleLogout}
+            >
+              Log Out
+            </Button>
+          </Box>
+          <DisplayText messages={messages} />
+          <SendText
+            messages={messages}
+            handleSubmit={handleSubmit}
+            input={input}
+            handleInputChange={handleInputChange}
+          />
+        </Stack>
+      </Box>
     </Box>
   );
 }
