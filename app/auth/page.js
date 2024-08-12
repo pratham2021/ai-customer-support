@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
 
-function page() {
+function Auth() {
   const [displayLogin, setDisplayLogin] = useState(true);
   const [loadingPage, setLoadingPage] = useState(true);
   const router = useRouter();
@@ -44,4 +44,4 @@ function page() {
   );
 }
 
-export default page;
+export default Auth;
