@@ -1,12 +1,13 @@
 "use client";
 import Login from "@/components/Login";
 import SignUp from "@/components/SignUp";
+import LoadingPage from "@/components/LoadingPage";
 import { auth } from "../firebase/config";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { onAuthStateChanged } from "firebase/auth";
 
-function page() {
+function Auth() {
   const [displayLogin, setDisplayLogin] = useState(true);
   const [loadingPage, setLoadingPage] = useState(true);
   const router = useRouter();
@@ -33,7 +34,7 @@ function page() {
   }, [router]);
 
   if (loadingPage) {
-    return <div>Loading...</div>;
+    return <LoadingPage />;
   }
 
   return displayLogin ? (
@@ -43,4 +44,4 @@ function page() {
   );
 }
 
-export default page;
+export default Auth;

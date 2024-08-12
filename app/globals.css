@@ -1,11 +1,31 @@
 .Home {
   font-family: sans-serif;
   text-align: center;
-  /* background-color: black; */
+}
+
+a {
+  color: #443aff;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #9c19fa;
+}
+
+.button {
+  background-color: #0d1f2d;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #8d99ae;
+  box-shadow: 0 0 10px #8d99ae;
 }
 
 * {
   margin: 0;
   box-sizing: border-box;
-  /* background-color: black; */
 }
