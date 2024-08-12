@@ -29,7 +29,6 @@ export default function Home() {
   }, [router]);
 
   if (user === undefined) {
-    // return <div>Loading...</div>;
     return <LoadingPage />;
   }
 

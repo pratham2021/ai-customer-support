@@ -2,7 +2,6 @@ import { Box, CircularProgress } from "@mui/material";
 import React from "react";
 
 function LoadingPage() {
-  // return <div>Loading...</div>;
   return (
     <Box
       width="100vw"

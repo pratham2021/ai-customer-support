@@ -34,7 +34,6 @@ function page() {
   }, [router]);
 
   if (loadingPage) {
-    // return <div>Loading...</div>;
     return <LoadingPage />;
   }
 

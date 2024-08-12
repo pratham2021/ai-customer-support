@@ -41,8 +41,6 @@ function ChatBox({ setUser }) {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
-      // marginTop={2}
-      // marginX={"auto"}
     >
       <Box
         width="90vw"
@@ -54,7 +52,6 @@ function ChatBox({ setUser }) {
       >
         <Stack
           direction={"column"}
-          // marginTop={4}
           width="100%"
           height="100%"
           border="1px solid black"

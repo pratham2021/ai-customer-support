@@ -27,7 +27,7 @@ function SignUp({ toggleDisplay }) {
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
+      console.log(errorCode);
       if (errorCode === "auth/weak-password") {
         setError("The password is too weak.");
       } else if (errorCode === "auth/email-already-in-use") {
