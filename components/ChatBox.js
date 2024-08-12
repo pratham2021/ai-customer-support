@@ -61,6 +61,7 @@ function ChatBox({ setUser }) {
           borderRadius={2}
           padding={1}
           spacing={1.5}
+          sx={{ boxShadow: 3 }}
         >
           <Box
             display="flex"
@@ -71,7 +72,11 @@ function ChatBox({ setUser }) {
             paddingX={1}
           >
             <Typography variant="h6">Chat</Typography>
-            <Button variant="contained" onClick={handleLogout}>
+            <Button
+              className="button"
+              variant="contained"
+              onClick={handleLogout}
+            >
               Log Out
             </Button>
           </Box>

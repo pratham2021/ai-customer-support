@@ -50,6 +50,7 @@ function Login({ toggleDisplay }) {
         alignItems="center"
         border={1}
         borderRadius={2}
+        sx={{ boxShadow: 5 }}
       >
         <Stack
           spacing={3}
@@ -82,7 +83,7 @@ function Login({ toggleDisplay }) {
               }}
             />
           </Stack>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button className="button" variant="contained" onClick={handleSubmit}>
             Login
           </Button>
 

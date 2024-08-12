@@ -19,6 +19,12 @@ function SendText({ meessages, input, handleInputChange, handleSubmit }) {
           },
         }}
         onChange={handleInputChange}
+        onKeyPress={(event) => {
+          if (event.key === "Enter" && !event.shiftKey) {
+            event.preventDefault();
+            handleSubmit();
+          }
+        }}
       />
       <Button variant="contained" onClick={handleSubmit}>
         Send

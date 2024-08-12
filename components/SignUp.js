@@ -28,7 +28,13 @@ function SignUp({ toggleDisplay }) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
-      setError("Falied to create an account. Please try again.");
+      if (errorCode === "auth/weak-password") {
+        setError("The password is too weak.");
+      } else if (errorCode === "auth/email-already-in-use") {
+        setError("The email is already in use.");
+      } else {
+        setError("Falied to create an account. Please try again.");
+      }
     }
   };
 
@@ -49,6 +55,7 @@ function SignUp({ toggleDisplay }) {
         alignItems="center"
         border={1}
         borderRadius={2}
+        sx={{ boxShadow: 5 }}
       >
         <Stack
           spacing={3}
@@ -81,7 +88,7 @@ function SignUp({ toggleDisplay }) {
               }}
             />
           </Stack>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button className="button" variant="contained" onClick={handleSubmit}>
             Sign Up
           </Button>
 
